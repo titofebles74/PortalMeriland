@@ -1,0 +1,57 @@
+{% extends '_MainLayout.html' %}
+
+{% block content %}
+<!-- Default form register -->
+<div class="row" xmlns="http://www.w3.org/1999/html">
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6">
+        <form id="contactanos-form">
+
+            <p class="h4 mb-4 text-center">Contáctanos</p>
+
+            <div class="md-form md-outline">
+              <input type="text" name="nombre" id="nombre" class="form-control">
+              <label for="nombre">Nombre completo</label>
+              <small id="nombreHelp3" class="form-text text-muted">Favor de escribir nombre y apellidos</small>
+            </div>
+
+            <!-- Email -->
+            <div class="md-form md-outline">
+              <input type="text" name="email" id="email" class="form-control">
+              <label for="email">Correo electrónico</label>
+              <small id="emailHelp3" class="form-text text-muted">Correo electrónico de contacto</small>
+            </div>
+
+            <!-- Subject -->
+            <label>Motivo del mensaje</label>
+            <select class="browser-default custom-select mb-4">
+                <option value="" disabled>Seleccionar motivo</option>
+                <option value="1" selected>Cotizar un viaje</option>
+                <option value="1" selected>Información sobre destino turístico</option>
+                <option value="2">Reportar problema con el sitio</option>
+                <option value="3">Reportar alguna noticia</option>
+            </select>
+
+            <!-- Message -->
+            <div class="md-form md-outline">
+                <textarea name="mensaje" id="mensaje" class="form-control md-textarea" rows="3"></textarea>
+                <label for="mensaje">Message</label>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-10 text-center">
+                    <button type="submit" class="btn btn-info btn-md">Enviar </button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+    <div class="col-md-3">
+    </div>
+</div>
+{% endblock %}
