@@ -8,6 +8,10 @@ class Clasificacion(models.Model):
     class Meta:
         ordering = ['-nombre']
 
+    def __str__(self):
+        ret = self.nombre
+        return ret
+
 
 class Post(models.Model):
     titulo = models.CharField(max_length=255)
@@ -26,4 +30,8 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('meriland.views.post', args=[self.slug])
 
+
+    def __str__(self):
+        ret = self.titulo
+        return ret
 
