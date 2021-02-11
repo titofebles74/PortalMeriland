@@ -1,3 +1,24 @@
+from rest_framework import serializers
+from meriland.models import Post, Clasificacion
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            'titulo', 'resumen', 'contenido', 'image'
+        )
+
+
+class ClasificacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Clasificacion
+        fields = (
+            'nombre'
+        )
+
+
+'''
 from django.contrib.auth.models import User, Group
 from meriland.models import Post, Clasificacion
 from rest_framework import serializers
@@ -27,3 +48,4 @@ class ClasificacionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['nombre']
 
 
+'''

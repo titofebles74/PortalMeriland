@@ -15,22 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+
 from rest_framework import routers
+from rest_framework.authtoken import views
+
 from APIRest import views as APIRest
 from meriland import views as blog
 
 from django.conf import settings
 from django.conf.urls.static import static
 
+'''
 router = routers.DefaultRouter()
 router.register(r'users', APIRest.UserViewSet)
 router.register(r'groups', APIRest.GroupViewSet)
 router.register(r'posts', APIRest.PostViewSet)
 router.register(r'clasificaciones', APIRest.ClasificacionViewSet)
+'''
 
-
+# path('api/', include(router.urls)),
 urlpatterns = [
-    path('API/', include(router.urls)),
+    path('api/1.0/', include(('APIRest.urls', 'APIRest'))),
+    path('api_generate_token/', views.ObtainAuthToken),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', blog.index),
     path('contacto/', blog.contacto),
@@ -40,4 +46,3 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

@@ -1,8 +1,35 @@
-from django.contrib.auth.models import User, Group
+from django.shortcuts import render
+from rest_framework import generics
 from meriland.models import Post, Clasificacion
+from .serializer import PostSerializer, ClasificacionSerializer
+
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class ClasificacionList(generics.ListCreateAPIView):
+    queryset = Clasificacion.objects.all()
+    serializer_class = ClasificacionSerializer
+
+
+'''
+# Importamos las tablas que queremos ver Primero del sistema
+from django.contrib.auth.models import User, Group
+# Ahora los que creamos
+from meriland.models import Post, Clasificacion
+
+# Ahora serializer
+from APIRest.serializer import UserSerializer, GroupSerializer, PostSerializer, ClasificacionSerializer
+
+# importamos librearias de rest_framework
 from rest_framework import viewsets
 from rest_framework import permissions
-from APIRest.serializer import UserSerializer, GroupSerializer, PostSerializer, ClasificacionSerializer
+
+# Verificar esta opcion
+# from rest_framework import generics
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -34,3 +61,4 @@ class ClasificacionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+'''
