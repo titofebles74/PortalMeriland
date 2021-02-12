@@ -36,7 +36,7 @@ router.register(r'clasificaciones', APIRest.ClasificacionViewSet)
 # path('api/', include(router.urls)),
 urlpatterns = [
     path('api/1.0/', include(('APIRest.urls', 'APIRest'))),
-    path('api_generate_token/', views.ObtainAuthToken),
+    path('api_generate_token/', views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', blog.index),
     path('contacto/', blog.contacto),
