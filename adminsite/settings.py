@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'meriland',
     'bootstrap4',
     'rest_framework',
-    #'rest_framework.authtoken',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -123,10 +123,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-#REST_FRAMEWORK = {
-#    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-#    'PAGE_SIZE': 10
-#}
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 '''
 REST_FRAMEWORK = {
