@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from meriland.models import Post, Clasificacion
 from .serializer import PostSerializer, ClasificacionSerializer
 
@@ -12,6 +15,12 @@ class PostList(generics.ListCreateAPIView):
 class ClasificacionList(generics.ListCreateAPIView):
     queryset = Clasificacion.objects.all()
     serializer_class = ClasificacionSerializer
+
+class logout(APIView):
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        logout(request)
+        return Response(status=status.HTTP_200_OK)
 
 
 '''
