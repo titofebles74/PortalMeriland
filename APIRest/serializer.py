@@ -5,17 +5,13 @@ from meriland.models import Post, Clasificacion
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = (
-            'titulo', 'resumen', 'contenido', 'image'
-        )
+        fields = ['titulo', 'resumen', 'contenido', 'image']
 
 
 class ClasificacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clasificacion
-        fields = (
-            'nombre'
-        )
+        fields = ['nombre']
 
 
 '''
