@@ -18,3 +18,7 @@ def contacto(request):
 
 def quienessomos(request):
     return render(request, "quienessomos.html", {})
+
+
+def avisoprivacidad(request):
+    return render(request, "avisoprivacidad.html", {})

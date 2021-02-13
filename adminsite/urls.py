@@ -40,6 +40,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', blog.index),
     path('quienessomos/', blog.quienessomos),
+    path('avisoprivacidad', blog.avisoprivacidad),
     path('contacto/', blog.contacto),
     path('post/<slug>', blog.post),
     path('admin/', admin.site.urls),
