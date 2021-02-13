@@ -20,8 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!g3=b0*z%4zfjw2$6j4(jhe%=5ze0$!(&3tel2ibl($5i0a_^)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -131,16 +129,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+SECURE_SSL_REDIRECT = False
+
+SESSION_COOKIE_SECURE = False
+
+CSRF_COOKIE_SECURE = False
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-'''
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
-'''
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
