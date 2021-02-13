@@ -22,3 +22,4 @@ def quienessomos(request):
 
 def avisoprivacidad(request):
     return render(request, "avisoprivacidad.html", {})
+
