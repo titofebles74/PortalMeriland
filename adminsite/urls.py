@@ -39,6 +39,7 @@ urlpatterns = [
     path('api_generate_token/', views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', blog.index),
+    path('quienessomos/', blog.quienessomos),
     path('contacto/', blog.contacto),
     path('post/<slug>', blog.post),
     path('admin/', admin.site.urls),

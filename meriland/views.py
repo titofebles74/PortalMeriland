@@ -15,3 +15,6 @@ def post(request, slug):
 def contacto(request):
     return render(request, "contacto.html", {})
 
+
+def quienessomos(request):
+    return render(request, "quienessomos.html", {})

@@ -1,57 +1,115 @@
 {% extends '_MainLayout.html' %}
 
 {% block content %}
-<!-- Default form register -->
-<div class="row" xmlns="http://www.w3.org/1999/html">
-    <div class="col-md-3">
-    </div>
+<!--Section: Contact v.2-->
+<section class="mb-4">
 
-    <div class="col-md-6">
-        <form id="contactanos-form">
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Contactanos</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5">¿Tiene usted alguna pregunta? No dude en contactarnos directamente. Nuestro equipo se pondrá en contacto contigo tan pronto como sea posible.</p>
 
-            <p class="h4 mb-4 text-center">Contáctanos</p>
+    <div class="row">
 
-            <div class="md-form md-outline">
-              <input type="text" name="nombre" id="nombre" class="form-control">
-              <label for="nombre">Nombre completo</label>
-              <small id="nombreHelp3" class="form-text text-muted">Favor de escribir nombre y apellidos</small>
-            </div>
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
 
-            <!-- Email -->
-            <div class="md-form md-outline">
-              <input type="text" name="email" id="email" class="form-control">
-              <label for="email">Correo electrónico</label>
-              <small id="emailHelp3" class="form-text text-muted">Correo electrónico de contacto</small>
-            </div>
+                <!--Grid row-->
+                <div class="row">
 
-            <!-- Subject -->
-            <label>Motivo del mensaje</label>
-            <select class="browser-default custom-select mb-4">
-                <option value="" disabled>Seleccionar motivo</option>
-                <option value="1" selected>Cotizar un viaje</option>
-                <option value="1" selected>Información sobre destino turístico</option>
-                <option value="2">Reportar problema con el sitio</option>
-                <option value="3">Reportar alguna noticia</option>
-            </select>
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="nombre" name="nombre" class="form-control">
+                            <label for="nombre" class="">Tu nombre</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
 
-            <!-- Message -->
-            <div class="md-form md-outline">
-                <textarea name="mensaje" id="mensaje" class="form-control md-textarea" rows="3"></textarea>
-                <label for="mensaje">Message</label>
-            </div>
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Tu correo electrónico</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
 
-
-            <div class="form-group row">
-                <div class="col-sm-10 text-center">
-                    <button type="submit" class="btn btn-info btn-md">Enviar </button>
                 </div>
-            </div>
+                <!--Grid row-->
 
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="telefono" name="telefono" class="form-control">
+                            <label for="telefono" class="">Teléfono</label>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
 
-        </form>
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="mensaje" name="mensaje" rows="2" class="form-control md-textarea"></textarea>
+                            <label for="mensaje">Escribe tu mensaje</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <label>Motivo del mensaje</label>
+                        <select class="browser-default custom-select mb-4">
+                            <option value="" disabled>Seleccionar motivo</option>
+                            <option value="1" selected>Cotizar un viaje</option>
+                            <option value="1" selected>Información sobre destino turístico</option>
+                            <option value="2">Reportar problema con el sitio</option>
+                            <option value="3">Reportar alguna noticia</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Grid row-->
+                <div class="text-center text-md-left">
+                    <a type="submit" class="btn btn-primary">Enviar</a>
+                </div>
+                <div class="status"></div>
+            </form>
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Agencia Meriland, C.P. 97217, MEXICO</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+ 52 (999) 242-62-17</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>info@meriland.mx</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+
     </div>
 
-    <div class="col-md-3">
-    </div>
-</div>
+</section>
+<!--Section: Contact v.2-->
 {% endblock %}
