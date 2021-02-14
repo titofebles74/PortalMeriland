@@ -2,6 +2,23 @@ from django.db import models
 from django.urls import reverse
 
 
+class Comentarios(models.Model):
+    fecha = models.DateTimeField(auto_now=True)
+    nombre = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=20)
+    mensaje = models.CharField(max_length=500)
+    motivo = models.CharField(max_length=50)
+    atendido = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-nombre']
+
+    def __str__(self):
+        ret = self.nombre
+        return ret
+
+
 class Clasificacion(models.Model):
     nombre = models.CharField(max_length=100)
 

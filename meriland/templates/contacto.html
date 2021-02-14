@@ -13,7 +13,25 @@
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <select id="motivo" name="motivo" class="browser-default custom-select">
+                              <option value="" disabled selected>Selecciona una opción</option>
+                              <option value="Cotizar un viaje">Cotizar un viaje</option>
+                              <option value="Solicitar informes de mi reservación">Solicitar informes de mi reservación</option>
+                              <option value="Más información de una noticia">Solicitar más información de una noticia</option>
+                              <option value="Informar problemas con el sitio">Informar problemas con el sitio</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <!--Grid row-->
 
                 <!--Grid row-->
                 <div class="row">
@@ -21,8 +39,8 @@
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="nombre" name="nombre" class="form-control">
-                            <label for="nombre" class="">Tu nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                            <label for="nombre" class="">Tu nombre completo</label>
                         </div>
                     </div>
                     <!--Grid column-->
@@ -30,7 +48,7 @@
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
+                            <input type="text" id="email" name="email" class="form-control" required>
                             <label for="email" class="">Tu correo electrónico</label>
                         </div>
                     </div>
@@ -39,16 +57,18 @@
                 </div>
                 <!--Grid row-->
 
-                <!--Grid row-->
+                <!--Grid column-->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="telefono" name="telefono" class="form-control">
-                            <label for="telefono" class="">Teléfono</label>
+                            <input type="text" id="telefono" name="telefono" class="form-control" required>
+                            <label for="telefono" class="">Número celular</label>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                    </div>
                 </div>
-                <!--Grid row-->
+                <!--Grid column-->
 
                 <!--Grid row-->
                 <div class="row">
@@ -57,34 +77,20 @@
                     <div class="col-md-12">
 
                         <div class="md-form">
-                            <textarea type="text" id="mensaje" name="mensaje" rows="2" class="form-control md-textarea"></textarea>
+                            <textarea type="text" id="mensaje" name="mensaje" rows="2" class="form-control md-textarea" required></textarea>
                             <label for="mensaje">Escribe tu mensaje</label>
                         </div>
 
                     </div>
                 </div>
 
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <label>Motivo del mensaje</label>
-                        <select class="browser-default custom-select mb-4">
-                            <option value="" disabled>Seleccionar motivo</option>
-                            <option value="1" selected>Cotizar un viaje</option>
-                            <option value="1" selected>Información sobre destino turístico</option>
-                            <option value="2">Reportar problema con el sitio</option>
-                            <option value="3">Reportar alguna noticia</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!--Grid row-->
                 <div class="text-center text-md-left">
-                    <a type="submit" class="btn btn-primary">Enviar</a>
+                    <input class="btn btn-primary" type="submit" value="Enviar">
                 </div>
                 <div class="status"></div>
+
+                <div class="status"></div>
+
             </form>
 
         </div>

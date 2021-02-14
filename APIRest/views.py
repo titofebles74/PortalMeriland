@@ -3,8 +3,8 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from meriland.models import Post, Clasificacion
-from .serializer import PostSerializer, ClasificacionSerializer
+from meriland.models import Post, Clasificacion, Comentarios
+from .serializer import PostSerializer, ClasificacionSerializer, ComentariosSerializer
 
 
 class PostList(generics.ListCreateAPIView):
@@ -15,6 +15,12 @@ class PostList(generics.ListCreateAPIView):
 class ClasificacionList(generics.ListCreateAPIView):
     queryset = Clasificacion.objects.all()
     serializer_class = ClasificacionSerializer
+
+
+class ComentariosList(generics.ListCreateAPIView):
+    queryset = Comentarios.objects.all()
+    serializer_class = ComentariosSerializer
+
 
 class logout(APIView):
     def get(self, request, format=None):

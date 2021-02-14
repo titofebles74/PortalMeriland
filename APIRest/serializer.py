@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from meriland.models import Post, Clasificacion
+from meriland.models import Post, Clasificacion, Comentarios
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -12,6 +12,12 @@ class ClasificacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clasificacion
         fields = ['nombre']
+
+
+class ComentariosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comentarios
+        fields = ['fecha', 'nombre', 'email', 'telefono', 'mensaje', 'motivo', 'atendido']
 
 
 '''
