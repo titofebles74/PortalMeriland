@@ -23,6 +23,7 @@ def contacto(request):
 
 def index(request):
     posts = Post.objects.all()
+    print(posts)
     return render(request, "index.html", {"posts": posts})
 
 
@@ -30,6 +31,11 @@ def post(request, slug):
     return render(request, "post.html", {
         "post": get_object_or_404(Post, slug=slug)
     })
+
+
+def filtronoticia(request, clasificacion):
+    posts = Post.objects.filter(clasificacion=clasificacion)
+    return render(request, "index.html", {"posts": posts})
 
 
 def quienessomos(request):

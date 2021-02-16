@@ -43,6 +43,7 @@ urlpatterns = [
     path('avisoprivacidad', blog.avisoprivacidad),
     path('contacto/', blog.contacto),
     path('post/<slug>', blog.post),
+    path('noticia/<clasificacion>', blog.filtronoticia),
     path('admin/', admin.site.urls),
 ]
 

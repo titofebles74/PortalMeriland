@@ -5,265 +5,55 @@
 {% endblock %}
 
 {% block content %}
-<main class="mt-5">
+<div class="container mt-5">
 
-      <!--Section: Magazine v.1-->
-      <section class="wow fadeIn">
+  <!--Section: Content-->
+  <section class="">
 
-        <!--Section heading-->
-        <h2 class="h1 text-center font-weight-bold">Últimas noticias!</h2>
+    <!-- Section heading -->
+    <h3 class="text-center font-weight-bold mb-5">Últimas noticias</h3>
 
-        <!--Grid row-->
-        <div class="row text-left">
+  	<!-- Grid row -->
+    <div class="row">
 
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12">
+      {% for post in posts %}
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
 
-            <!--Image-->
-            <div class="view overlay rounded z-depth-1-half mb-3">
-              <img src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg" class="img-fluid" alt="Sample post image">
-              <a>
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
+        <!-- Card -->
+        <div class="card hoverable">
 
-            <!--Excerpt-->
-            <div class="news-data">
-              <a href="" class="light-blue-text">
-                <h6>
-                  <i class="fas fa-plane"></i>
-                  <strong> Travels</strong>
-                </h6>
-              </a>
-              <p>
-                <strong>
-                  <i class="far fa-clock"></i> 20/08/2018</strong>
-              </p>
-            </div>
-            <h3>
-              <a>
-                <strong>This is title of the news</strong>
-              </a>
-            </h3>
-            <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-              placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-            </p>
+          <!-- Card image -->
+          <img class="card-img-top" src="/media/{{ post.image }}" alt="Card image cap">
 
-            <!--/Featured news-->
+          <!-- Card content -->
+          <div class="card-body">
 
-            <hr>
+            <!-- Title -->
+            <a href="#!" class="black-text">{{ post.titulo }}</a>
+            <!-- Text -->
+            <p class="card-title text-muted font-small mt-3 mb-2">{{ post.resumen }}</p>
 
-            <!--Small news-->
-            <div class="row">
-              <div class="col-md-3">
-
-                <!--Image-->
-                <div class="view overlay rounded z-depth-1">
-                  <img src="https://mdbootstrap.com/img/Photos/Others/photo8.jpg" class="img-fluid" alt="Minor sample post image">
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-              </div>
-
-              <!--Excerpt-->
-              <div class="col-md-9">
-                <p class="dark-grey-text">
-                  <strong>19/08/2018</strong>
-                </p>
-                <a>Lorem ipsum dolor sit amet
-                  <i class="fas fa-angle-right float-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!--/Small news-->
-
-            <hr>
-
-            <!--Small news-->
-            <div class="row">
-              <div class="col-md-3">
-
-                <!--Image-->
-                <div class="view overlay rounded z-depth-1">
-                  <img src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" class="img-fluid" alt="Minor sample post image">
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-              </div>
-
-              <!--Excerpt-->
-              <div class="col-md-9">
-                <p class="dark-grey-text">
-                  <strong>18/08/2018</strong>
-                </p>
-                <a>Soluta nobis est eligendi
-                  <i class="fas fa-angle-right float-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!--/Small news-->
-
-            <hr>
-
-            <!--Small news-->
-            <div class="row">
-              <div class="col-md-3">
-
-                <!--Image-->
-                <div class="view overlay rounded z-depth-1">
-                  <img src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" class="img-fluid" alt="Minor sample post image">
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-              </div>
-
-              <!--Excerpt-->
-              <div class="col-md-9">
-                <p class="dark-grey-text">
-                  <strong>17/08/2018</strong>
-                </p>
-                <a>Voluptatem accusantium doloremque
-                  <i class="fas fa-angle-right float-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!--/Small news-->
-
+            <a class="btn btn-flat text-primary p-0 mx-0" href="post/{{ post.slug }}" role="button">Más información<i class="fa fa-plane ml-2"></i></a>
           </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12">
-
-            <!--Image-->
-            <div class="view overlay rounded z-depth-1-half mb-3">
-              <img src="https://mdbootstrap.com/img/Photos/Others/images/32.jpg" class="img-fluid" alt="Sample post image">
-              <a>
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!--Excerpt-->
-            <div class="news-data">
-              <a href="" class="light-blue-text">
-                <h6>
-                  <i class="fas fa-plane"></i>
-                  <strong> Travels</strong>
-                </h6>
-              </a>
-              <p>
-                <strong>
-                  <i class="far fa-clock"></i> 20/08/2018</strong>
-              </p>
-            </div>
-            <h3>
-              <a>
-                <strong>This is title of the news</strong>
-              </a>
-            </h3>
-            <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-              placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-            </p>
-
-            <!--/Featured news-->
-
-            <hr>
-
-            <!--Small news-->
-            <div class="row">
-              <div class="col-md-3">
-
-                <!--Image-->
-                <div class="view overlay rounded z-depth-1">
-                  <img src="https://mdbootstrap.com/img/Photos/Others/photo11.jpg" class="img-fluid" alt="Minor sample post image">
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-              </div>
-
-              <!--Excerpt-->
-              <div class="col-md-9">
-                <p class="dark-grey-text">
-                  <strong>19/08/2018</strong>
-                </p>
-                <a>Lorem ipsum dolor sit amet
-                  <i class="fas fa-angle-right float-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!--/Small news-->
-
-            <hr>
-
-            <!--Small news-->
-            <div class="row">
-              <div class="col-md-3">
-
-                <!--Image-->
-                <div class="view overlay rounded z-depth-1">
-                  <img src="https://mdbootstrap.com/img/Photos/Others/images/51.jpg" class="img-fluid" alt="Minor sample post image">
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-              </div>
-
-              <!--Excerpt-->
-              <div class="col-md-9">
-                <p class="dark-grey-text">
-                  <strong>18/08/2018</strong>
-                </p>
-                <a>Soluta nobis est eligendi
-                  <i class="fas fa-angle-right float-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!--/Small news-->
-
-            <hr>
-
-            <!--Small news-->
-            <div class="row">
-              <div class="col-md-3">
-
-                <!--Image-->
-                <div class="view overlay rounded z-depth-1">
-                  <img src="https://mdbootstrap.com/img/Photos/Others/images/44.jpg" class="img-fluid" alt="Minor sample post image">
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-              </div>
-
-              <!--Excerpt-->
-              <div class="col-md-9">
-                <p class="dark-grey-text">
-                  <strong>17/08/2018</strong>
-                </p>
-                <a>Voluptatem accusantium doloremque
-                  <i class="fas fa-angle-right float-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!--/Small news-->
-
-          </div>
-          <!--Grid column-->
 
         </div>
-        <!--Grid row-->
+        <!-- Card -->
 
-      </section>
-      <!--/Section: Magazine v.1-->
-  </main>
+      </div>
+      <!-- Grid column -->
+      {% endfor %}
+
+    </div>
+    <!-- Grid row -->
+
+    <div class="text-center mt-5">
+    	<a href="#!">Browse all blog posts</a>
+    </div>
+
+  </section>
+  <!--Section: Content-->
+
+
+</div>
 {% endblock %}
