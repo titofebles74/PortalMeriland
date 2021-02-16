@@ -38,6 +38,11 @@ def filtronoticia(request, clasificacion):
     return render(request, "index.html", {"posts": posts})
 
 
+def todaslasnoticias(request):
+    posts = Post.objects.filter(publicado=True)[:20]
+    return render(request, "index.html", {"posts": posts})
+
+
 def quienessomos(request):
     return render(request, "quienessomos.html", {})
 
