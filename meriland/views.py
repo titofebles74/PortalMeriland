@@ -55,3 +55,7 @@ def dondeestamos(request):
     return render(request, "dondeestamos.html", {})
 
 
+def desarrolladopor(request):
+    return render(request, "desarrolladopor.html", {})
+
+
