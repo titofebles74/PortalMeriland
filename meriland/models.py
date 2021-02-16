@@ -38,6 +38,7 @@ class Post(models.Model):
     publicado = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now=True)
     clasificacion = models.ForeignKey(Clasificacion, on_delete=models.CASCADE)
+    referencia = models.CharField(max_length=200)
     image = models.ImageField(upload_to='img')
 
     class Meta:
