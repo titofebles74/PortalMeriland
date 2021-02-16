@@ -45,6 +45,7 @@ urlpatterns = [
     path('post/<slug>', blog.post),
     path('noticia/<clasificacion>', blog.filtronoticia),
     path('todaslasnoticias/', blog.todaslasnoticias),
+    path('dondeestamos/', blog.dondeestamos),
     path('admin/', admin.site.urls),
 ]
 
