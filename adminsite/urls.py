@@ -25,17 +25,18 @@ from meriland import views as blog
 from django.conf import settings
 from django.conf.urls.static import static
 
-'''
+
 router = routers.DefaultRouter()
 router.register(r'users', APIRest.UserViewSet)
 router.register(r'groups', APIRest.GroupViewSet)
 router.register(r'posts', APIRest.PostViewSet)
 router.register(r'clasificaciones', APIRest.ClasificacionViewSet)
-'''
+
 
 # path('api/', include(router.urls)),
 urlpatterns = [
-    path('api/1.0/', include(('APIRest.urls', 'APIRest'))),
+    path('api/', include(router.urls)),
+    #path('api/1.0/', include(('APIRest.urls', 'APIRest'))),
     path('api_generate_token/', views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', blog.index),

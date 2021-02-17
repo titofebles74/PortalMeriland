@@ -1,4 +1,4 @@
-from django.shortcuts import render
+'''
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,10 +6,13 @@ from rest_framework.response import Response
 from meriland.models import Post, Clasificacion, Comentarios
 from .serializer import PostSerializer, ClasificacionSerializer, ComentariosSerializer
 
+from rest_framework.parsers import JSONParser
+
 
 class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(publicado=True)[:6]
     serializer_class = PostSerializer
+
 
 
 class ClasificacionList(generics.ListCreateAPIView):
@@ -18,7 +21,7 @@ class ClasificacionList(generics.ListCreateAPIView):
 
 
 class ComentariosList(generics.ListCreateAPIView):
-    queryset = Comentarios.objects.all()
+    queryset = Comentarios.objects.filter(atendido=False)
     serializer_class = ComentariosSerializer
 
 
@@ -27,9 +30,9 @@ class logout(APIView):
         request.user.auth_token.delete()
         logout(request)
         return Response(status=status.HTTP_200_OK)
-
-
 '''
+
+# otro Codigo
 # Importamos las tablas que queremos ver Primero del sistema
 from django.contrib.auth.models import User, Group
 # Ahora los que creamos
@@ -44,6 +47,7 @@ from rest_framework import permissions
 
 # Verificar esta opcion
 # from rest_framework import generics
+from rest_framework.renderers import JSONRenderer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -76,4 +80,3 @@ class ClasificacionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-'''
