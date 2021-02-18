@@ -30,7 +30,7 @@ router = routers.DefaultRouter()
 router.register(r'users', APIRest.UserViewSet)
 router.register(r'groups', APIRest.GroupViewSet)
 router.register(r'posts', APIRest.PostViewSet)
-router.register(r'clasificaciones', APIRest.ClasificacionViewSet)
+router.register(r'clasificacion', APIRest.ClasificacionViewSet)
 
 
 # path('api/', include(router.urls)),

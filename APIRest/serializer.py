@@ -52,6 +52,6 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 class ClasificacionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Clasificacion
-        fields = ['nombre']
+        fields = ['id', 'nombre']
 
 
