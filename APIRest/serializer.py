@@ -21,7 +21,6 @@ class ComentariosSerializer(serializers.ModelSerializer):
         fields = ['fecha', 'nombre', 'email', 'telefono', 'mensaje', 'motivo', 'atendido']
 
 '''
-
 #otro codigo
 
 from django.contrib.auth.models import User, Group
