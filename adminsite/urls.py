@@ -31,6 +31,7 @@ router.register(r'users', APIRest.UserViewSet)
 router.register(r'groups', APIRest.GroupViewSet)
 router.register(r'posts', APIRest.PostViewSet)
 router.register(r'clasificacion', APIRest.ClasificacionViewSet)
+router.register(r'postuser', APIRest.PostUserViewSet)
 
 
 # path('api/', include(router.urls)),

@@ -28,13 +28,10 @@ from django.contrib.auth.models import User, Group
 from meriland.models import Post, Clasificacion
 from rest_framework import serializers
 
-from rest_framework.renderers import JSONRenderer
-
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'groups']
+        fields = ['url', 'username', 'email', 'groups', 'first_name', 'last_name']
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
@@ -44,9 +41,11 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
+    autor = serializers.StringRelatedField(many=False)
+
     class Meta:
         model = Post
-        fields = ['titulo', 'slug', 'resumen', 'contenido', 'publicado', 'creado', 'clasificacion', 'referencia', 'image']
+        fields = ['titulo', 'slug', 'resumen', 'contenido', 'publicado', 'creado', 'clasificacion', 'referencia', 'image', 'autor']
 
 
 class ClasificacionSerializer(serializers.HyperlinkedModelSerializer):
@@ -55,3 +54,9 @@ class ClasificacionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'nombre']
 
 
+class PostUserSerializer(serializers.HyperlinkedModelSerializer):
+    autor = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Post
+        fields = ['titulo', 'slug', 'resumen', 'contenido', 'publicado', 'creado', 'clasificacion', 'referencia', 'image', 'autor']

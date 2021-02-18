@@ -39,7 +39,7 @@ from django.contrib.auth.models import User, Group
 from meriland.models import Post, Clasificacion
 
 # Ahora serializer
-from APIRest.serializer import UserSerializer, GroupSerializer, PostSerializer, ClasificacionSerializer
+from APIRest.serializer import UserSerializer, GroupSerializer, PostSerializer, ClasificacionSerializer, PostUserSerializer
 
 # importamos librearias de rest_framework
 from rest_framework import viewsets
@@ -77,6 +77,12 @@ class PostViewSet(viewsets.ModelViewSet):
 class ClasificacionViewSet(viewsets.ModelViewSet):
     queryset = Clasificacion.objects.all()
     serializer_class = ClasificacionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class PostUserViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 

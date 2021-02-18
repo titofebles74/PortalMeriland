@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 class Comentarios(models.Model):
     fecha = models.DateTimeField(auto_now=True)
@@ -40,6 +40,7 @@ class Post(models.Model):
     clasificacion = models.ForeignKey(Clasificacion, on_delete=models.CASCADE)
     referencia = models.CharField(max_length=200)
     image = models.ImageField(upload_to='img')
+    autor = models.ForeignKey(User, related_name='autor', on_delete=models.CASCADE, default=1)
 
     class Meta:
         ordering = ['-creado']
