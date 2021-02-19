@@ -75,7 +75,7 @@ class ClasificacionViewSet(viewsets.ModelViewSet):
 
 
 class PostUserViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.filter(publicado=True)[:6]
+    queryset = Post.objects.filter(publicado=True, esnoticia=True)[:9]
     serializer_class = PostUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -88,7 +88,7 @@ class PostUserClasificacionViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         clasificacion = self.request.query_params.get('clasificacion')
-        return Post.objects.filter(publicado=True, clasificacion=clasificacion)[:6]
+        return Post.objects.filter(publicado=True, clasificacion=clasificacion)[:9]
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
