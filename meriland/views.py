@@ -22,7 +22,7 @@ def contacto(request):
 
 
 def index(request):
-    posts = Post.objects.filter(publicado=True)[:6]
+    posts = Post.objects.filter(publicado=True, esnoticia=True)[:9]
     print(posts)
     return render(request, "index.html", {"posts": posts})
 
@@ -34,12 +34,12 @@ def post(request, slug):
 
 
 def filtronoticia(request, clasificacion):
-    posts = Post.objects.filter(publicado=True, clasificacion=clasificacion)[:6]
+    posts = Post.objects.filter(publicado=True, clasificacion=clasificacion)[:9]
     return render(request, "index.html", {"posts": posts})
 
 
 def todaslasnoticias(request):
-    posts = Post.objects.filter(publicado=True)[:20]
+    posts = Post.objects.filter(publicado=True, esnoticia=True)[:20]
     return render(request, "index.html", {"posts": posts})
 
 

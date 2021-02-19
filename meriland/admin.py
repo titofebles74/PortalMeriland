@@ -7,7 +7,7 @@ class ClasificacionAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'resumen', 'publicado']
+    list_display = ['titulo', 'resumen', 'esnoticia', 'publicado']
 
 
 class ComentariosAdmin(admin.ModelAdmin):

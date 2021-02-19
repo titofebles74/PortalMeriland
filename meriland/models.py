@@ -43,6 +43,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     resumen = models.CharField(max_length=300)
     contenido = models.TextField()
+    esnoticia = models.BooleanField(default=True)
     publicado = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now=True)
     clasificacion = models.ForeignKey(Clasificacion, on_delete=models.CASCADE)
