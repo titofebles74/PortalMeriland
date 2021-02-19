@@ -2,6 +2,14 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    foto = models.ImageField(upload_to='img')
+    nacimiento = models.DateField(null=True, blank=True)
+    biografia = models.TextField()
+
+
 class Comentarios(models.Model):
     fecha = models.DateTimeField(auto_now=True)
     nombre = models.CharField(max_length=100)

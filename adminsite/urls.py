@@ -29,9 +29,9 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'users', APIRest.UserViewSet)
 router.register(r'groups', APIRest.GroupViewSet)
-router.register(r'posts', APIRest.PostViewSet)
 router.register(r'clasificacion', APIRest.ClasificacionViewSet)
 router.register(r'postuser', APIRest.PostUserViewSet)
+router.register(r'profile', APIRest.ProfileViewSet)
 
 
 # path('api/', include(router.urls)),

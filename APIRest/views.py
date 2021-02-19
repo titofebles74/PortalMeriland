@@ -36,10 +36,10 @@ class logout(APIView):
 # Importamos las tablas que queremos ver Primero del sistema
 from django.contrib.auth.models import User, Group
 # Ahora los que creamos
-from meriland.models import Post, Clasificacion
+from meriland.models import Post, Clasificacion, Profile
 
 # Ahora serializer
-from APIRest.serializer import UserSerializer, GroupSerializer, PostSerializer, ClasificacionSerializer, PostUserSerializer
+from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer,ProfileSerializer
 
 # importamos librearias de rest_framework
 from rest_framework import viewsets
@@ -68,12 +68,6 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
 class ClasificacionViewSet(viewsets.ModelViewSet):
     queryset = Clasificacion.objects.all()
     serializer_class = ClasificacionSerializer
@@ -83,6 +77,12 @@ class ClasificacionViewSet(viewsets.ModelViewSet):
 class PostUserViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostUserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
