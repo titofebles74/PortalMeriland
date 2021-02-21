@@ -34,20 +34,29 @@ class logout(APIView):
 
 # otro Codigo
 # Importamos las tablas que queremos ver Primero del sistema
+from django.contrib.auth import logout
 from django.contrib.auth.models import User, Group
 # Ahora los que creamos
-from meriland.models import Post, Clasificacion, Profile
+
+from meriland.models import Post, Clasificacion, Profile, Comentarios
 
 # Ahora serializer
-from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer,ProfileSerializer
+from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer, ProfileSerializer, ComentariosSerializer
 
 # importamos librearias de rest_framework
 from rest_framework import viewsets
 from rest_framework import permissions
 
 # Verificar esta opcion
-# from rest_framework import generics
-from rest_framework.renderers import JSONRenderer
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+
+class ComentariosViewSet(viewsets.ModelViewSet):
+    queryset = Comentarios.objects.all()
+    serializer_class = ComentariosSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -96,4 +105,11 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
+'''
+class Logout(APIView):
+    def get(self, request, format = None):
+        # simply delete the token to force a login
+        request.user.auth_token.delete()
+        logout(request)
+        return Response(status=status.HTTP_200_OK)
+'''

@@ -32,6 +32,7 @@ router.register(r'groups', APIRest.GroupViewSet)
 router.register(r'clasificacion', APIRest.ClasificacionViewSet)
 router.register(r'postuser', APIRest.PostUserViewSet)
 router.register(r'profile', APIRest.ProfileViewSet)
+router.register(r'comentarios', APIRest.ComentariosViewSet)
 router.register(r'PostFiltrado', APIRest.PostUserClasificacionViewSet, basename="clasificacion")
 
 # path('api/', include(router.urls)),

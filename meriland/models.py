@@ -15,7 +15,7 @@ class Comentarios(models.Model):
     nombre = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     telefono = models.CharField(max_length=20)
-    mensaje = models.CharField(max_length=500)
+    mensaje = models.TextField()
     motivo = models.CharField(max_length=50)
     atendido = models.BooleanField(default=False)
 
@@ -41,7 +41,7 @@ class Clasificacion(models.Model):
 class Post(models.Model):
     titulo = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
-    resumen = models.CharField(max_length=300)
+    resumen = models.TextField()
     contenido = models.TextField()
     esnoticia = models.BooleanField(default=True)
     publicado = models.BooleanField(default=True)
