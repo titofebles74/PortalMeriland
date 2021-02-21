@@ -50,6 +50,7 @@ urlpatterns = [
     path('noticia/<clasificacion>', blog.filtronoticia),
     path('todaslasnoticias/', blog.todaslasnoticias),
     path('desarrolladopor/', blog.desarrolladopor),
+    path('captcha', blog.captcha),
     path('admin/', admin.site.urls),
 ]
 

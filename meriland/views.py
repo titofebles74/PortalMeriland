@@ -59,3 +59,6 @@ def desarrolladopor(request):
     return render(request, "desarrolladopor.html", {})
 
 
+def captcha(request):
+    return render(request, "captcha.html", {})
+
