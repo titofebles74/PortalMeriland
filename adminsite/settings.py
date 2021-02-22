@@ -20,18 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-#RECAPTCHA_SECRET_KEY = "6LeECWIaAAAAAHAY4N0hxyT5VGMQs8COhrz_stkh"
-#NORECAPTCHA_SECRET_KEY = "6LeECWIaAAAAAEIpB5NMM-HSubTXs4z2N63VKHEs"
+RECAPTCHA_SECRET_KEY = "6LeECWIaAAAAAHAY4N0hxyT5VGMQs8COhrz_stkh"
+NORECAPTCHA_SECRET_KEY = "6LeECWIaAAAAAEIpB5NMM-HSubTXs4z2N63VKHEs"
 
-RECAPTCHA_SECRET_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-NORECAPTCHA_SECRET_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+#RECAPTCHA_SECRET_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+#NORECAPTCHA_SECRET_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 
 # Application definition
 
