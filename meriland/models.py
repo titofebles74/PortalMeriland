@@ -44,6 +44,7 @@ class Post(models.Model):
     resumen = models.TextField()
     contenido = models.TextField()
     esnoticia = models.BooleanField(default=True)
+    espromocion = models.BooleanField(default=False)
     publicado = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now=True)
     clasificacion = models.ForeignKey(Clasificacion, on_delete=models.CASCADE)
