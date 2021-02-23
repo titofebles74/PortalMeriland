@@ -46,11 +46,11 @@ urlpatterns = [
     path('quienessomos/', blog.quienessomos),
     path('avisoprivacidad', blog.avisoprivacidad),
     path('contacto/', blog.contacto),
+    path('captch/', blog.captcha),
     path('post/<slug>', blog.post),
     path('noticia/<clasificacion>', blog.filtronoticia),
     path('todaslasnoticias/', blog.todaslasnoticias),
     path('desarrolladopor/', blog.desarrolladopor),
-    path('captcha', blog.captcha),
     path('admin/', admin.site.urls),
 ]
 

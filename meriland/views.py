@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from meriland.models import Post
-from meriland.forms import ComentariosForm
+from meriland.forms import ComentariosForm, CaptchForm
 from django.conf import settings
 import requests
 
@@ -12,6 +12,15 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+
+def captcha(request):
+    if request.method == 'POST':
+        form = CaptchForm(request.POST)
+        print(form)
+    else:
+        return render(request, "captcha.html", {})
+
 
 def contacto(request):
     print("Entro")
@@ -60,7 +69,7 @@ def filtronoticia(request, clasificacion):
 
 
 def todaslasnoticias(request):
-    posts = Post.objects.filter(publicado=True, esnoticia=True).order_by('id').reverse()[:20]
+    posts = Post.objects.filter(publicado=True, esnoticia=True).order_by('id').reverse()[:12]
     return render(request, "index.html", {"posts": posts})
 
 
@@ -78,8 +87,4 @@ def dondeestamos(request):
 
 def desarrolladopor(request):
     return render(request, "desarrolladopor.html", {})
-
-
-def captcha(request):
-    return render(request, "captcha.html", {})
 
