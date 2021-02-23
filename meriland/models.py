@@ -18,7 +18,6 @@ class Comentarios(models.Model):
     mensaje = models.TextField()
     motivo = models.CharField(max_length=50)
     atendido = models.BooleanField(default=False)
-    recaptcha = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-nombre']

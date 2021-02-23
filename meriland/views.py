@@ -40,7 +40,7 @@ def contacto(request):
         print(result)
         form = ComentariosForm(request.POST)
         print(result['success'])
-        if result['success']:
+        if result['success'] == True:
             print(form)
             if form.is_valid():
                 form.save()
