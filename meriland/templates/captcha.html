@@ -1,15 +1,13 @@
 {% extends '_MainLayout.html' %}
 
 {% block content %}
-<section class="mb-4">
-  <p class="text-center w-responsive mx-auto mb-5">¿Probando captch?</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
 
-  <form action="?" method="POST">
-        <div id="g-recaptcha" name="g-recaptcha" class="g-recaptcha" data-sitekey="6LeECWIaAAAAAHAY4N0hxyT5VGMQs8COhrz_stkh"></div>
-        <br/>
-        <div class="text-center text-md-left">
-            <input class="btn btn-primary" type="submit" value="Enviar">
-        </div>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6LdRSRYUAAAAAOnk5yomm1dI9BmQkJWTg_wIlMJ_"></div>
+
+    <button type="submit" class="btn btn-primary">Post</button>
   </form>
-</section>
 {% endblock %}

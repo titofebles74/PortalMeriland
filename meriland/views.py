@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from meriland.models import Post
 from meriland.forms import ComentariosForm, CaptchForm
 from django.conf import settings
-import requests
+import urllib
+import urllib.request
+import json
 
 
 def get_client_ip(request):
@@ -15,11 +17,7 @@ def get_client_ip(request):
 
 
 def captcha(request):
-    if request.method == 'POST':
-        form = CaptchForm(request.POST)
-        print(form)
-    else:
-        return render(request, "captcha.html", {})
+    return render(request, "captcha.html", {})
 
 
 def contacto(request):
@@ -28,32 +26,35 @@ def contacto(request):
 
     if request.method == 'POST':
         print("Previo")
-        form = ComentariosForm(request.POST)
-        captcha_rs = form.get("g-recaptcha")
-        print(form)
-        print(captcha_rs)
-        url = "https://www.google.com/recaptcha/api/siteverify"
-        params = {
-            'secret': settings.RECAPTCHA_SECRET_KEY,
-            'response': captcha_rs,
-            'remoteip': get_client_ip(request)
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        values = {
+            'secret': settings.RECAPTCHA_PUBLIC_KEY,
+            'response': recaptcha_response
         }
-        verify_rs = requests.get(url, params=params, verify=True)
-        verify_rs = verify_rs.json()
-        print(verify_rs.get("success", False))
+        data = urllib.parse.urlencode(values).encode("utf-8")
+        req = urllib.request.urlopen(url, data)
+        result = json.load(req)
+        ''' End reCAPTCHA validation '''
 
-        if form.is_valid():
-            form.save()
-            return render(request, "gracias.html", {})
+        print(result)
+        form = ComentariosForm(request.POST)
+        print(result['success'])
+        if result['success']:
+            print(form)
+            if form.is_valid():
+                form.save()
+                return render(request, "gracias.html", {})
+            else:
+                return render(request, "contacto.html", {"formset": form})
         else:
-            return render(request, "contacto.html", {"formset": formset})
+            return render(request, "contacto.html", {"formset": form})
     else:
         return render(request, "contacto.html", {"formset": formset})
 
 
 def index(request):
     posts = Post.objects.filter(publicado=True, esnoticia=True).order_by('id').reverse()[:6]
-    print(posts)
     return render(request, "index.html", {"posts": posts})
 
 
