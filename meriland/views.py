@@ -25,7 +25,7 @@ def contacto(request):
     formset = ComentariosForm()
 
     if request.method == 'POST':
-        print("Previo")
+        ''' End reCAPTCHA validation '''
         recaptcha_response = request.POST.get('g-recaptcha-response')
         url = 'https://www.google.com/recaptcha/api/siteverify'
         values = {
@@ -48,7 +48,7 @@ def contacto(request):
             else:
                 return render(request, "contacto.html", {"formset": form})
         else:
-            return render(request, "contacto.html", {"formset": form})
+            return render(request, "error.html", {})
     else:
         return render(request, "contacto.html", {"formset": formset})
 
