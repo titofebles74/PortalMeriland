@@ -43,7 +43,7 @@ def contacto(request):
 
 
 def index(request):
-    posts = Post.objects.filter(publicado=True, esnoticia=True).order_by('id').reverse()[:9]
+    posts = Post.objects.filter(publicado=True, esnoticia=True).order_by('id').reverse()[:6]
     print(posts)
     return render(request, "index.html", {"posts": posts})
 
@@ -55,7 +55,7 @@ def post(request, slug):
 
 
 def filtronoticia(request, clasificacion):
-    posts = Post.objects.filter(publicado=True, clasificacion=clasificacion).order_by('id').reverse()[:9]
+    posts = Post.objects.filter(publicado=True, clasificacion=clasificacion).order_by('id').reverse()[:6]
     return render(request, "index.html", {"posts": posts})
 
 
