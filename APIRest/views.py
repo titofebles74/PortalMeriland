@@ -54,6 +54,16 @@ class AppUserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+class AppUserFiltroViewSet(viewsets.ModelViewSet):
+    queryset = AppUser.objects.all()
+    serializer_class = AppUserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        token = self.request.query_params.get('token')
+        return AppUser.objects.filter(token=token)
+
+
 class ComentariosViewSet(viewsets.ModelViewSet):
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
