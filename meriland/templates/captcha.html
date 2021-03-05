@@ -1,13 +1,13 @@
-{% extends '_MainLayout.html' %}
-
-{% block content %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <div class="g-recaptcha" data-sitekey="6LdRSRYUAAAAAOnk5yomm1dI9BmQkJWTg_wIlMJ_"></div>
-
-    <button type="submit" class="btn btn-primary">Post</button>
-  </form>
-{% endblock %}
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

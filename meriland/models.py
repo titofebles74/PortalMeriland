@@ -3,6 +3,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
+class AppUser(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    enviarnotificacion = models.BooleanField(default=True)
+    token = models.CharField(max_length=200)
+    fecha = models.DateField(auto_now=True)
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='img')

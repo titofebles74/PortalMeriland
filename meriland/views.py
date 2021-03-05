@@ -21,7 +21,6 @@ def captcha(request):
 
 
 def contacto(request):
-    print("Entro")
     formset = ComentariosForm()
 
     if request.method == 'POST':
@@ -37,9 +36,7 @@ def contacto(request):
         result = json.load(req)
         ''' End reCAPTCHA validation '''
 
-        print(result)
         form = ComentariosForm(request.POST)
-        print(result['success'])
         if result['success'] == True:
             print(form)
             if form.is_valid():

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Clasificacion, Comentarios, Profile
+from .models import Post, Clasificacion, Comentarios, Profile, AppUser
 
 class ClasificacionAdmin(admin.ModelAdmin):
     # a list of displayed columns name.
@@ -18,8 +18,12 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ['foto', 'nacimiento', 'biografia']
 
 
+class AppUserAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'email', 'enviarnotificacion']
+
 # Register your models here.
 admin.site.register(Post, PostAdmin)
 admin.site.register(Clasificacion, ClasificacionAdmin)
 admin.site.register(Comentarios, ComentariosAdmin)
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(AppUser, AppUserAdmin)
