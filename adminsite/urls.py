@@ -27,6 +27,7 @@ from django.conf.urls.static import static
 
 
 router = routers.DefaultRouter()
+router.register(r'appuser', APIRest.AppUserViewSet)
 router.register(r'users', APIRest.UserViewSet)
 router.register(r'groups', APIRest.GroupViewSet)
 router.register(r'clasificacion', APIRest.ClasificacionViewSet)

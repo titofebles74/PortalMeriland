@@ -38,19 +38,20 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User, Group
 # Ahora los que creamos
 
-from meriland.models import Post, Clasificacion, Profile, Comentarios
+from meriland.models import Post, Clasificacion, Profile, Comentarios, AppUser
 
 # Ahora serializer
-from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer, ProfileSerializer, ComentariosSerializer
+from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer, ProfileSerializer, ComentariosSerializer, AppUserSerializer
 
 # importamos librearias de rest_framework
 from rest_framework import viewsets
 from rest_framework import permissions
 
-# Verificar esta opcion
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
+
+class AppUserViewSet(viewsets.ModelViewSet):
+    queryset = AppUser.objects.all()
+    serializer_class = AppUserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class ComentariosViewSet(viewsets.ModelViewSet):
