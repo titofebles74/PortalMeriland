@@ -7,7 +7,7 @@ class AppUser(models.Model):
     nombre = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     enviarnotificacion = models.BooleanField(default=True)
-    token = models.CharField(max_length=200)
+    token = models.CharField(max_length=200, unique=True)
     fecha = models.DateField(auto_now=True)
 
 
