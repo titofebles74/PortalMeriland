@@ -36,13 +36,14 @@ router.register(r'profile', APIRest.ProfileViewSet)
 router.register(r'comentarios', APIRest.ComentariosViewSet)
 router.register(r'PostFiltrado', APIRest.PostUserClasificacionViewSet, basename="clasificacion")
 router.register(r'AppUserFiltrado', APIRest.AppUserFiltroViewSet, basename="token")
+router.register(r'firebase', APIRest.SendNotificacionViewSet, basename="titulo, mensaje, pantalla")
 
 # path('api/', include(router.urls)),
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api/<basename>', APIRest.PostUserClasificacionViewSet.as_view({"get": "list"})),
     path('api/<basename>', APIRest.AppUserFiltroViewSet.as_view({"get": "list"})),
-    #path('api/1.0/', include(('APIRest.urls', 'APIRest'))),
+    path('api/<basename>', APIRest.SendNotificacionViewSet.as_view({"get": "list"})),
     path('api_generate_token/', views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', blog.index),

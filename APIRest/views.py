@@ -41,11 +41,22 @@ from django.contrib.auth.models import User, Group
 from meriland.models import Post, Clasificacion, Profile, Comentarios, AppUser
 
 # Ahora serializer
-from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer, ProfileSerializer, ComentariosSerializer, AppUserSerializer
+from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer, ProfileSerializer, ComentariosSerializer, AppUserSerializer, NotificacionSerializer
 
 # importamos librearias de rest_framework
 from rest_framework import viewsets
 from rest_framework import permissions
+
+
+class SendNotificacionViewSet(viewsets.ModelViewSet):
+    serializer_class = NotificacionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        titulo = self.request.query_params.get('titulo')
+        mensaje = self.request.query_params.get('titulo')
+        pantalla = self.request.query_params.get('titulo')
+        return NotificacionSerializer.sendNotificacon(self, titulo, mensaje, pantalla)
 
 
 class AppUserViewSet(viewsets.ModelViewSet):

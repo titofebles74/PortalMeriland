@@ -26,6 +26,12 @@ class ComentariosSerializer(serializers.ModelSerializer):
 from django.contrib.auth.models import User, Group
 from meriland.models import Post, Clasificacion, Profile, Comentarios, AppUser
 from rest_framework import serializers
+from APIRest.Notificacion import enviar
+
+
+class NotificacionSerializer(serializers.HyperlinkedModelSerializer):
+    def sendNotificacon(self, titulo, mensaje, pantalla):
+        enviar(titulo, mensaje, pantalla)
 
 
 class AppUserSerializer(serializers.HyperlinkedModelSerializer):
