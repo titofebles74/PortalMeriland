@@ -101,10 +101,39 @@ WSGI_APPLICATION = 'adminsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
+    }
+}
+'''
+
+
+''' LOCAL
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'portalmeriland',
+        'HOST': 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false',
+        'USER': 'tito',
+        'PASSWORD': 'hrlf740624',
+    }
+}
+'''
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        "CLIENT": {
+           "name": 'portalmeriland',
+           "host": 'mongodb+srv://meriland:hrlf740624@demo1.oytmw.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+           "username": 'meriland',
+           "password": 'hrlf740624',
+           "authMechanism": "SCRAM-SHA-1",
+        },
     }
 }
 
