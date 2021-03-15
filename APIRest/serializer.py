@@ -43,7 +43,7 @@ class AppUserSerializer(serializers.HyperlinkedModelSerializer):
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Profile
-        fields = ['foto', 'biografia', 'nacimiento', 'user']
+        fields = ['nacimiento', 'foto', 'biografia']
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

@@ -15,7 +15,7 @@ class ComentariosAdmin(admin.ModelAdmin):
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['foto', 'nacimiento', 'biografia']
+    list_display = ['user', 'foto', 'nacimiento', 'biografia']
 
 
 class AppUserAdmin(admin.ModelAdmin):
