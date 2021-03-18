@@ -38,10 +38,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User, Group
 # Ahora los que creamos
 
-from meriland.models import Post, Clasificacion, Profile, Comentarios, AppUser
+from meriland.models import Clasificacion, Comentarios, AppUser, Perfil, Post
 
 # Ahora serializer
-from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, PostUserSerializer, ProfileSerializer, ComentariosSerializer, AppUserSerializer, NotificacionSerializer
+from APIRest.serializer import UserSerializer, GroupSerializer, ClasificacionSerializer, ComentariosSerializer, AppUserSerializer, NotificacionSerializer, ProfileSerializer, PostUserSerializer
 
 # importamos librearias de rest_framework
 from rest_framework import viewsets
@@ -123,9 +123,10 @@ class PostUserClasificacionViewSet(viewsets.ModelViewSet):
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = Profile.objects.all()
+    queryset = Perfil.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
+
 
 '''
 class Logout(APIView):

@@ -24,7 +24,7 @@ class ComentariosSerializer(serializers.ModelSerializer):
 #otro codigo
 
 from django.contrib.auth.models import User, Group
-from meriland.models import Post, Clasificacion, Profile, Comentarios, AppUser
+from meriland.models import Clasificacion, Comentarios, AppUser, Perfil, Post
 from rest_framework import serializers
 from APIRest.Notificacion import enviar
 
@@ -42,16 +42,16 @@ class AppUserSerializer(serializers.HyperlinkedModelSerializer):
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Profile
-        fields = ['nacimiento', 'foto', 'biografia']
+        model = Perfil
+        fields = ['user_id', 'nacimiento', 'foto', 'biografia', 'user']
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    profile = ProfileSerializer(read_only=True)
+    #profile = ProfileSerializer(read_only=True)
 
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'first_name', 'last_name', 'profile']
+        fields = ['id', 'url', 'username', 'email', 'first_name', 'last_name']
 
 
 class ComentariosSerializer(serializers.HyperlinkedModelSerializer):
@@ -78,3 +78,5 @@ class PostUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
         fields = ['id', 'titulo', 'slug', 'resumen', 'contenido', 'publicado', 'creado', 'clasificacion', 'referencia', 'image', 'autor']
+
+

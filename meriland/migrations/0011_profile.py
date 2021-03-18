@@ -20,7 +20,6 @@ class Migration(migrations.Migration):
                 ('foto', models.ImageField(upload_to='img')),
                 ('nacimiento', models.DateField(blank=True, null=True)),
                 ('biografia', models.TextField()),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

@@ -16,6 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '!g3=b0*z%4zfjw2$6j4(jhe%=5ze0$!(&3tel2ibl($5i0a_^)'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -25,7 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+
 #recaptcha
+RECAPTCHA_SECRET_KEY = '6LeECWIaAAAAAHAY4N0hxyT5VGMQs8COhrz_stkh'
+RECAPTCHA_PUBLIC_KEY = '6LeECWIaAAAAAEIpB5NMM-HSubTXs4z2N63VKHEs'
+RECAPTCHA_PRIVATE_KEY = '6LeECWIaAAAAAEIpB5NMM-HSubTXs4z2N63VKHEs'
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -92,15 +99,17 @@ WSGI_APPLICATION = 'adminsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
+'''
 
-
-''' LOCAL
+''' LOCAL '''
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -111,6 +120,20 @@ DATABASES = {
     }
 }
 '''
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        "CLIENT": {
+           "name": 'portalmeriland',
+           "host": 'mongodb+srv://meriland:hrlf740624@demo1.oytmw.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+           "username": 'meriland',
+           "password": 'hrlf740624',
+           "authMechanism": "SCRAM-SHA-1",
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

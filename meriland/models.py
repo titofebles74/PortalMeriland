@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+# from django.conf import settings
 
 class AppUser(models.Model):
     nombre = models.CharField(max_length=100)
@@ -10,12 +11,9 @@ class AppUser(models.Model):
     token = models.CharField(max_length=200, unique=True)
     fecha = models.DateField(auto_now=True)
 
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    foto = models.ImageField(upload_to='img')
-    nacimiento = models.DateField(null=True, blank=True)
-    biografia = models.TextField()
+    def __str__(self):
+        ret = self.nombre
+        return ret
 
 
 class Comentarios(models.Model):
@@ -46,6 +44,21 @@ class Clasificacion(models.Model):
         return ret
 
 
+class Perfil(models.Model):
+    nombre = models.CharField(max_length=200, null=True, blank=True)
+    titulo = models.CharField(max_length=50, default='Sr(a)')
+    foto = models.ImageField(upload_to='img')
+    nacimiento = models.DateField(null=True, blank=True)
+    biografia = models.TextField()
+
+    class Meta:
+        ordering = ['-nombre']
+
+    def __str__(self):
+        ret = self.nombre
+        return ret
+
+
 class Post(models.Model):
     titulo = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
@@ -55,10 +68,10 @@ class Post(models.Model):
     espromocion = models.BooleanField(default=False)
     publicado = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now=True)
-    clasificacion = models.ForeignKey(Clasificacion, on_delete=models.CASCADE)
+    clasificacion = models.ForeignKey(Clasificacion, related_name='clasificacion', on_delete=models.CASCADE)
     referencia = models.CharField(max_length=200)
     image = models.ImageField(upload_to='img')
-    autor = models.ForeignKey(User, related_name='autor', on_delete=models.CASCADE, default=1)
+    #usuariocaptura = models.ForeignKey(Perfil, related_name='usuariocaptura', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-creado']
