@@ -113,19 +113,6 @@ DATABASES = {
 '''
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        "CLIENT": {
-           "name": 'portalmeriland',
-           "host": 'mongodb+srv://meriland:hrlf740624@demo1.oytmw.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-           "username": 'meriland',
-           "password": 'hrlf740624',
-           "authMechanism": "SCRAM-SHA-1",
-        },
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
