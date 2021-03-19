@@ -71,7 +71,7 @@ class Post(models.Model):
     clasificacion = models.ForeignKey(Clasificacion, related_name='clasificacion', on_delete=models.CASCADE)
     referencia = models.CharField(max_length=200)
     image = models.ImageField(upload_to='img')
-    #usuariocaptura = models.ForeignKey(Perfil, related_name='usuariocaptura', on_delete=models.CASCADE)
+    perfil = models.ForeignKey(Perfil, related_name='perfil', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-creado']
