@@ -46,14 +46,6 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['user_id', 'nacimiento', 'foto', 'biografia', 'user']
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    #profile = ProfileSerializer(read_only=True)
-
-    class Meta:
-        model = User
-        fields = ['id', 'url', 'username', 'email', 'first_name', 'last_name']
-
-
 class ComentariosSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comentarios
@@ -72,11 +64,17 @@ class ClasificacionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'nombre']
 
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Perfil
+        fields = ['nombre', 'titulo', 'foto', 'nacimiento', 'biografia']
+
+
 class PostUserSerializer(serializers.HyperlinkedModelSerializer):
-    autor = UserSerializer(read_only=True)
+    perfil = UserSerializer(read_only=True)
 
     class Meta:
         model = Post
-        fields = ['id', 'titulo', 'slug', 'resumen', 'contenido', 'publicado', 'creado', 'clasificacion', 'referencia', 'image', 'autor']
+        fields = ['id', 'titulo', 'slug', 'resumen', 'contenido', 'publicado', 'creado', 'clasificacion', 'referencia', 'image', 'perfil']
 
 
