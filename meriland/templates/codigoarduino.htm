@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1> Código Arduino NodemCU </h1>
+<p>
+//Includes </BR>
+#include Arduino.h </BR>
+#include PubSubClient.h  </BR>
+#include ESP8266WiFi.h </BR>
+#include ESP8266HTTPClient.h </BR>
+#include DHT.h </BR>
+ </BR>
+//Clave WiFi </BR>
+//const char* ssid = "HUAWEIY72018"; </BR>
+//const char* password = "pumas240"; </BR>
+const char* ssid = "Totalplay-CD40"; </BR>
+const char* password = "B1C0CD40"; </BR>
+ </BR>
+//Clave mqtt </BR>
+const char* mqtt_server = "postman.cloudmqtt.com"; </BR>
+const int mqtt_port = 10960; </BR>
+const char* mqtt_user = "ygogkefv"; </BR>
+const char* mqtt_pass = "IRbLpsRSW19B"; </BR>
+ </BR>
+//Variables Iniciales mqtt </BR>
+WiFiClient espClient; </BR>
+PubSubClient client(espClient); </BR>
+ </BR>
+//Variables Globales </BR>
+long lastMsg = 0; //Aqui controlamos cada cuanto se envia mensajes sin usar delay() </BR>
+ </BR>
+//Pines a Usar Tarjeta Arduino </BR>
+//Sensor Humedad </BR>
+int PinSensorTemperatura = 2; //D5 - GPI014 </BR>
+//Leds </BR>
+byte Led1 = 14; //D5 - GPI014 </BR>
+byte Led2 = 4; //D2 - GPI04 </BR>
+byte Led3 = 5; //D1 - GPI05 </BR>
+byte Led4 = 16; //D0 - GPI016 </BR>
+ </BR>
+//Temperatura y humedad </BR>
+DHT Sensor (PinSensorTemperatura, DHT11); </BR>
+char arrTemperatura[50]; </BR>
+char arrHumedad[50]; </BR>
+int Temperatura; </BR>
+byte Humedad; </BR>
+ </BR>
+void setup() { </BR>
+  Serial.begin(115200); </BR>
+  //Led </BR>
+  pinMode(Led1, OUTPUT); </BR>
+  pinMode(Led2, LOW); </BR>
+   </BR>
+  //Sensor </BR>
+  Sensor.begin(); </BR>
+     </BR>
+  setup_wifi(); </BR>
+  client.setServer(mqtt_server, mqtt_port); </BR>
+  client.setCallback(callback); </BR>
+} </BR>
+ </BR>
+void loop() { </BR>
+  // put your main code here, to run repeatedly: </BR>
+  if (!client.connected()){ </BR>
+    reconectar(); </BR>
+  } </BR>
+ </BR>
+  client.loop(); </BR>
+  Humedad = Sensor.readHumidity(); </BR>
+  Temperatura = Sensor.readTemperature(); </BR>
+   </BR>
+  if (millis()-lastMsg > 60000){ </BR>
+    lastMsg = millis(); </BR>
+ </BR>
+    String strTemperatura = String(Temperatura); </BR>
+    strTemperatura.toCharArray(arrTemperatura, 50); </BR>
+    String strHumedad = String(Humedad); </BR>
+    strHumedad.toCharArray(arrHumedad, 50); </BR>
+     </BR>
+    client.publish("temperatura", arrTemperatura); </BR>
+    client.publish("humedad", arrHumedad); </BR>
+    Serial.println("Temperatura -> " +  String(Temperatura)); </BR>
+  } </BR>
+} </BR>
+ </BR>
+void reconectar(){ </BR>
+  while(!client.connected()){ </BR>
+    Serial.println("Intentando conexion mqtt"); </BR>
+    String clienteID = "iot_1_"; </BR>
+    clienteID = clienteID + String(random(0xffff), HEX); </BR>
+ </BR>
+    if (client.connect(clienteID.c_str(), mqtt_user, mqtt_pass)){ </BR>
+      Serial.println("Conexión exitosa mqtt!!!!"); </BR>
+      //client.publish("Temperatura", "primer mensaje NodemCU"); </BR>
+      client.subscribe("IOTLed1"); </BR>
+      client.subscribe("IOTLed2"); </BR>
+      client.subscribe("IOTLed3"); </BR>
+      client.subscribe("IOTLed4"); </BR>
+    }else{ </BR>
+      Serial.print("Fallo la conexión "); </BR>
+      Serial.println(client.state()); </BR>
+      Serial.println("Se intentará de nuevo"); </BR>
+      delay(5000); </BR>
+    } </BR>
+  } </BR>
+} </BR>
+ </BR>
+void setup_wifi(){ </BR>
+  Serial.println(); </BR>
+  Serial.println("Conectando..."); </BR>
+  Serial.println(ssid); </BR>
+ </BR>
+  WiFi.begin(ssid, password); </BR>
+  while (WiFi.status() != WL_CONNECTED) { </BR>
+    delay(500); </BR>
+    Serial.print("."); </BR>
+  } </BR>
+ </BR>
+  Serial.println(); </BR>
+  Serial.println("Conectado a la red WiFi"); </BR>
+  Serial.println("Direccion IP"); </BR>
+  Serial.println(WiFi.localIP()); </BR>
+  Serial.println(ssid); </BR>
+} </BR>
+ </BR>
+void callback(char* topic, byte* payload, unsigned int lenght){ </BR>
+  Serial.print("Mensaje recibido del tópico ->"); </BR>
+  Serial.println(topic); </BR>
+   </BR>
+  String strValor = topic; </BR>
+  Serial.println(strValor); </BR>
+   </BR>
+  for(int i = 0; i < lenght; i++){ </BR>
+    Serial.print((char)payload[i]); </BR>
+  } </BR>
+ </BR>
+  //Topico </BR>
+  if (strValor == "IOTLed1"){ </BR>
+    if ((char)payload[0] == '1'){ </BR>
+      digitalWrite(Led1, HIGH); </BR>
+      Serial.println("Led Encendido"); </BR>
+    }else{ </BR>
+      digitalWrite(Led1, LOW); </BR>
+      Serial.println("Led Apagado"); </BR>
+    } </BR>
+    Serial.println(); </BR>
+  } </BR>
+  //Topico OTRO PUERTO </BR>
+  if (strValor == "IOTLed2"){ </BR>
+    if ((char)payload[0] == '1'){ </BR>
+      digitalWrite(Led2, LOW); </BR>
+      Serial.println("Led Encendido"); </BR>
+    }else{ </BR>
+      digitalWrite(Led2, HIGH); </BR>
+      Serial.println("Led Apagado"); </BR>
+    } </BR>
+    Serial.println(); </BR>
+  } </BR>
+  //Topico OTRO PUERTO </BR>
+  if (strValor == "IOTLed3"){ </BR>
+    if ((char)payload[0] == '1'){ </BR>
+      digitalWrite(Led3, LOW); </BR>
+      Serial.println("Led Encendido"); </BR>
+    }else{ </BR>
+      digitalWrite(Led3, HIGH); </BR>
+      Serial.println("Led Apagado"); </BR>
+    } </BR>
+    Serial.println(); </BR>
+  } </BR>
+  //Topico OTRO PUERTO </BR>
+  if (strValor == "IOTLed4"){ </BR>
+    if ((char)payload[0] == '1'){ </BR>
+      digitalWrite(Led4, LOW); </BR>
+      Serial.println("Led Encendido"); </BR>
+    }else{ </BR>
+      digitalWrite(Led4, HIGH); </BR>
+      Serial.println("Led Apagado"); </BR>
+    } </BR>
+    Serial.println(); </BR>
+  } </BR>
+} </BR>
+</p> </BR>
+<h1> Fin del código </h1> </BR>
+</body> </BR>
+</html> </BR>

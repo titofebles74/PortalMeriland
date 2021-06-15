@@ -89,3 +89,13 @@ def desarrolladopor(request):
 
 def esquema(request):
     return render(request, "esquema.htm", {})
+
+
+def codigoarduino(request):
+    return render(request, "codigoarduino.htm", {})
+
+
+def iothome(request):
+    return render(request, "iot.htm", {})
+
+
