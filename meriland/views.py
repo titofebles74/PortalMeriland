@@ -86,3 +86,6 @@ def dondeestamos(request):
 def desarrolladopor(request):
     return render(request, "desarrolladopor.html", {})
 
+
+def esquema(request):
+    return render(request, "esquema.htm", {})

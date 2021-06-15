@@ -56,6 +56,7 @@ urlpatterns = [
     path('todaslasnoticias/', blog.todaslasnoticias),
     path('desarrolladopor/', blog.desarrolladopor),
     path('admin/', admin.site.urls),
+    path('esquema/', blog.esquema),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
