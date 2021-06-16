@@ -99,3 +99,6 @@ def iothome(request):
     return render(request, "iot.htm", {})
 
 
+def tupagina(request):
+    return render(request, "tu_pagina.txt", {})
+

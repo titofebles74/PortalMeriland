@@ -58,6 +58,7 @@ urlpatterns = [
     path('esquema/', blog.esquema),
     path('iot/', blog.iothome),
     path('codigoarduino/', blog.codigoarduino),
+    path('tupagina/', blog.tupagina),
     path('admin/', admin.site.urls),
 ]
 
