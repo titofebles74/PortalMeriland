@@ -100,5 +100,5 @@ def iothome(request):
 
 
 def tupagina(request):
-    return render(request, "tu_pagina.txt", {})
+    return render(request, "tu_pagina.htm", {})
 
